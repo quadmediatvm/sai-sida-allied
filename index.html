@@ -1,815 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sai Sidd College of Allied Health Sciences | Learn Today. Care Tomorrow.</title>
-    <meta name="description" content="Sai Sidd College of Allied Health Sciences — Build the knowledge, skills and confidence to become a healthcare professional through classroom learning, practical training and clinical exposure.">
-    <meta property="og:title" content="Sai Sidd College of Allied Health Sciences">
-    <meta property="og:description" content="Learn Today. Care Tomorrow. Build the knowledge, skills and confidence to become a healthcare professional.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="photos/IMG_0229.JPG">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        paper: { 50: "#ffffff", 100: "#f7f5ef", 200: "#efe9dc", 300: "#ddd3bd" },
-                        navy:  { 950: "#0a1524", 900: "#0f1c30", 800: "#16273f", 700: "#1c3050", 600: "#28446e" },
-                        brass: { 100: "#f2e6c8", 300: "#d9b76a", 500: "#b28a2f", 600: "#9a7526", 700: "#7c5d1d" },
-                        clinic:{ 500: "#3f6357", 600: "#335147" }
-                    },
-                    fontFamily: {
-                        sans: ["Public Sans", "sans-serif"],
-                        serif: ["Fraunces", "serif"]
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f7f5ef; }
-        ::-webkit-scrollbar-thumb { background: #16273f; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #b28a2f; }
-
-        body { overflow-x: hidden; }
-
-        /* Header */
-        header.scrolled { box-shadow: 0 1px 0 rgba(16,28,48,0.08), 0 12px 28px -18px rgba(16,28,48,0.25); }
-
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px; left: 0;
-            width: 0; height: 1px;
-            background: #b28a2f;
-            transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
-        }
-        .nav-link:hover::after { width: 100%; }
-
-        /* Buttons */
-        .btn-brass {
-            background: #b28a2f; color: #0f1c30; font-weight: 700;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .btn-brass:hover { background: #c89a44; transform: translateY(-1px); }
-
-        .btn-navy {
-            background: #16273f; color: #fff; font-weight: 600;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-        .btn-navy:hover { background: #0a1524; transform: translateY(-1px); }
-
-        .btn-line {
-            background: transparent; border: 1px solid #b28a2f; color: #b28a2f; font-weight: 700;
-            transition: all 0.2s ease;
-        }
-        .btn-line:hover { background: #b28a2f; color: #0f1c30; transform: translateY(-1px); }
-
-        .btn-line-light {
-            background: transparent; border: 1px solid rgba(255,255,255,0.35); color: #fff; font-weight: 600;
-            transition: all 0.2s ease;
-        }
-        .btn-line-light:hover { border-color: #b28a2f; color: #d9b76a; }
-
-        /* Image frames */
-        .frame { overflow: hidden; position: relative; }
-        .frame img { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-        .frame:hover img { transform: scale(1.045); }
-
-        /* Feature row (Why Sai Sidd) */
-        .feature {
-            border-top: 1px solid #ddd3bd;
-            padding-top: 1.5rem;
-        }
-        .feature-icon {
-            border: 1px solid #ddd3bd;
-            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-        }
-        .feature:hover .feature-icon {
-            background: #16273f;
-            border-color: #16273f;
-            color: #d9b76a;
-        }
-
-        /* Hero load-in — one orchestrated moment */
-        @keyframes riseIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .rise { opacity: 0; animation: riseIn 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .rise-1 { animation-delay: 0.05s; }
-        .rise-2 { animation-delay: 0.18s; }
-        .rise-3 { animation-delay: 0.3s; }
-        .rise-4 { animation-delay: 0.42s; }
-        .rise-5 { animation-delay: 0.54s; }
-        .rise-6 { animation-delay: 0.66s; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .rise { opacity: 1; animation: none; transform: none; }
-            .frame img, .btn-brass, .btn-navy, .btn-line, .nav-link::after, .feature-icon { transition: none; }
-        }
-
-        /* Mobile menu */
-        #mobileMenu {
-            max-height: 0; overflow: hidden; opacity: 0;
-            transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
-        }
-        #mobileMenu.open { max-height: 560px; opacity: 1; }
-
-        /* Marquee strip */
-        .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marqueeScroll 26s linear infinite;
-        }
-        .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-        @keyframes marqueeScroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .marquee-track { animation: none; }
-        }
-
-        /* Floating WhatsApp CTA */
-        .fab-whatsapp {
-            position: fixed;
-            right: 18px;
-            bottom: 18px;
-            z-index: 60;
-            box-shadow: 0 10px 24px -8px rgba(10,21,36,0.45);
-        }
-        .fab-whatsapp .fab-ping {
-            position: absolute; inset: 0; border-radius: 9999px;
-            background: #3f6357; opacity: 0.55;
-            animation: fabPing 2.2s cubic-bezier(0,0,0.2,1) infinite;
-        }
-        @keyframes fabPing {
-            0% { transform: scale(1); opacity: 0.55; }
-            75%, 100% { transform: scale(1.9); opacity: 0; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .fab-whatsapp .fab-ping { animation: none; display: none; }
-        }
-
-        /* Mobile sticky bottom CTA bar */
-        #mobileCtaBar { padding-bottom: env(safe-area-inset-bottom, 0); }
-        @media (max-width: 1023px) {
-            body { padding-bottom: 64px; }
-            .fab-whatsapp { bottom: 76px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Sidd College of Allied Health Sciences | Learn Today. Care Tomorrow.</title>
+<meta name="description" content="Sai Sidd College of Allied Health Sciences — Build the knowledge, skills and confidence to become a healthcare professional through classroom learning, practical training and clinical exposure.">
+<meta property="og:title" content="Sai Sidd College of Allied Health Sciences">
+<meta property="og:description" content="Learn Today. Care Tomorrow. Build the knowledge, skills and confidence to become a healthcare professional.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="photos/IMG_0229.JPG">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{--navy:#0f1e38;--navy2:#16284c;--blue:#234278;--gold:#daa520;--gold2:#e5b22d;--paper:#f7f8fa;--line:rgba(15,30,56,.11);--muted:#667085;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--navy);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}.serif{font-family:'Playfair Display',serif}.container{width:min(1180px,calc(100% - 40px));margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:#9b700f;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.eyebrow:before{content:'';width:32px;height:2px;background:var(--gold)}.section{padding:110px 0}.section-head{max-width:680px}.section-head h2{font:600 clamp(38px,5vw,64px)/1.03 'Playfair Display',serif;margin:16px 0 20px;letter-spacing:-.035em}.section-head p{color:var(--muted);font-size:17px;line-height:1.85;margin:0}.gold{color:var(--gold)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 20px;transition:.35s}header.scrolled{padding:10px 20px}.nav{width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:11px 14px;background:rgba(255,255,255,.91);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px;box-shadow:0 15px 50px rgba(15,30,56,.09)}.brand{display:flex;align-items:center;gap:12px;min-width:220px}.brand img{width:43px;height:43px;object-fit:contain}.brand strong{font:700 18px/1 'Playfair Display',serif}.brand small{display:block;margin-top:4px;color:#9b700f;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.links{display:flex;gap:4px}.links a{padding:10px 12px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#31415f;border-radius:10px}.links a:hover{background:#f1f3f6;color:var(--gold)}.nav-cta{padding:12px 17px;border-radius:11px;background:var(--gold);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}.menu{display:none;border:0;background:transparent;color:var(--navy);padding:8px}.mobile{display:none}
+.hero{min-height:100vh;background:#fff;position:relative;display:flex;align-items:center;padding:145px 0 80px;overflow:hidden}.hero:before{content:'';position:absolute;width:700px;height:700px;border:1px solid rgba(218,165,32,.18);border-radius:50%;right:-360px;top:-80px}.hero:after{content:'';position:absolute;width:420px;height:420px;border:1px solid rgba(15,30,56,.07);border-radius:50%;left:-250px;bottom:-210px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:80px;align-items:center;position:relative;z-index:2}.hero h1{font:600 clamp(48px,6vw,82px)/.98 'Playfair Display',serif;letter-spacing:-.045em;margin:18px 0 24px}.hero h1 span{color:var(--gold)}.hero .tag{font:italic 500 clamp(22px,2.6vw,32px)/1.3 'Playfair Display',serif;color:var(--gold);margin-bottom:18px}.hero p{max-width:610px;color:#596579;font-size:18px;line-height:1.8;margin:0 0 32px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;border-radius:12px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;transition:.25s}.btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 12px 30px rgba(218,165,32,.23)}.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}.btn-dark{background:var(--navy);color:#fff}.btn-dark:hover{background:#1c3765;transform:translateY(-2px)}.hero-contact{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:35px;padding-top:18px;color:#697386;font-size:12px;font-weight:600}.hero-contact a:hover{color:var(--gold)}.visual{position:relative}.hero-image{height:650px;border-radius:24px;overflow:hidden;position:relative;box-shadow:0 35px 80px rgba(15,30,56,.18)}.hero-image img{width:100%;height:100%;object-fit:cover}.hero-image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(15,30,56,.72))}.hero-card{position:absolute;z-index:2;bottom:24px;left:24px;right:24px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:17px 18px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(255,255,255,.7)}.hero-card b{font:600 18px 'Playfair Display',serif}.hero-card i{color:var(--gold)}.corner{position:absolute;right:-22px;top:-22px;width:105px;height:105px;border:2px solid rgba(218,165,32,.55);border-radius:20px;z-index:-1}
+.about{background:var(--paper)}.split{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.photo-stack{position:relative;padding:0 45px 45px 0}.photo-main{height:610px;border-radius:22px;overflow:hidden}.photo-main img,.photo-small img{width:100%;height:100%;object-fit:cover}.photo-small{position:absolute;right:0;bottom:0;width:47%;height:250px;border:10px solid var(--paper);border-radius:20px;overflow:hidden;box-shadow:0 25px 55px rgba(15,30,56,.15)}.about-copy p{font-size:19px;line-height:1.9;color:#566174;max-width:600px}.about-copy .actions{margin-top:30px}
+.courses{background:var(--navy);color:#fff;position:relative;overflow:hidden}.courses:before{content:'';position:absolute;width:800px;height:800px;border:1px solid rgba(229,178,45,.12);border-radius:50%;right:-450px;top:-300px}.courses .section-head p{color:#b9c2d0}.course-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:90px;align-items:center;position:relative;z-index:1}.course-gallery{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.course-gallery .large{grid-row:span 2;height:560px}.course-gallery .small{height:273px}.course-gallery>div{border-radius:18px;overflow:hidden}.course-gallery img{width:100%;height:100%;object-fit:cover;transition:.6s}.course-gallery div:hover img{transform:scale(1.045)}
+.why{background:#fff}.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:55px}.why-card{min-height:215px;padding:30px;border:1px solid var(--line);border-radius:18px;background:#fff;position:relative;overflow:hidden;transition:.3s}.why-card:before{content:'';position:absolute;left:0;top:0;width:100%;height:3px;background:var(--gold);transform:scaleX(.25);transform-origin:left;transition:.3s}.why-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(15,30,56,.09);border-color:rgba(218,165,32,.4)}.why-card:hover:before{transform:scaleX(1)}.icon{width:48px;height:48px;border-radius:13px;background:var(--navy);color:var(--gold2);display:grid;place-items:center;margin-bottom:48px}.why-card h3{font:600 21px/1.25 'Playfair Display',serif;margin:0;max-width:260px}
+.student{background:var(--paper)}.student .split{grid-template-columns:.82fr 1.18fr}.student-copy p{font-size:19px;line-height:1.9;color:#566174}.student-gallery{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.student-gallery .tall{height:590px;grid-row:span 2}.student-gallery .square{height:288px}.student-gallery div{border-radius:18px;overflow:hidden}.student-gallery img{width:100%;height:100%;object-fit:cover;transition:.6s}.student-gallery div:hover img{transform:scale(1.04)}
+.admissions{background:var(--navy);color:#fff;padding:120px 0;position:relative;overflow:hidden;text-align:center}.admissions:before{content:'';position:absolute;width:620px;height:620px;border:1px solid rgba(229,178,45,.16);border-radius:50%;left:-390px;top:-250px}.admissions:after{content:'';position:absolute;width:430px;height:430px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-280px;bottom:-220px}.admissions-inner{position:relative;z-index:2;max-width:800px;margin:auto}.admissions h2{font:600 clamp(42px,6vw,72px)/1.03 'Playfair Display',serif;letter-spacing:-.04em;margin:18px 0}.admissions p{font-size:18px;line-height:1.8;color:#c1c9d5;margin:0 auto 35px}.admissions .actions{justify-content:center}.contact-strip{margin-top:48px;padding-top:25px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:center;gap:30px;flex-wrap:wrap;color:#b7c0ce;font-size:12px}.contact-strip a:hover{color:var(--gold2)}
+footer{background:#09162c;color:#fff;padding:65px 0 20px}.footer-grid{display:grid;grid-template-columns:1.3fr .7fr 1fr;gap:60px}.footer-brand{display:flex;align-items:center;gap:14px}.footer-brand img{width:52px;height:52px;object-fit:contain}.footer-brand strong{font:600 21px 'Playfair Display',serif}.footer-brand small{display:block;color:var(--gold2);font-size:8px;letter-spacing:.13em;text-transform:uppercase;margin-top:5px}.footer-contact{margin-top:24px;color:#aab5c5;font-size:13px;line-height:2}.footer-contact a:hover{color:var(--gold2)}.footer-title{color:var(--gold2);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin:0 0 18px}.footer-links{display:grid;gap:10px;color:#aab5c5;font-size:13px}.footer-links a:hover{color:#fff}.footer-bottom{margin-top:55px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:15px;color:#718096;font-size:11px}.footer-bottom a{color:var(--gold2)}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:none}.delay1{transition-delay:.1s}.delay2{transition-delay:.2s}.delay3{transition-delay:.3s}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(max-width:980px){.links,.nav-cta{display:none}.menu{display:block}.mobile{display:block;max-height:0;overflow:hidden;transition:.35s}.mobile.open{max-height:500px}.mobile-inner{margin:8px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:0 20px 50px rgba(15,30,56,.13)}.mobile a{display:block;padding:13px;border-radius:10px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.mobile a:hover{background:var(--paper)}.hero-grid,.split,.course-layout,.student .split{grid-template-columns:1fr;gap:55px}.hero{padding-top:125px}.hero-image{height:min(72vh,620px)}.corner{right:0}.course-layout{gap:50px}.course-gallery{max-width:720px}.why-grid{grid-template-columns:repeat(2,1fr)}.student-copy{order:2}.student-gallery{order:1}.footer-grid{grid-template-columns:1fr 1fr}.footer-grid>div:first-child{grid-column:1/-1}}
+@media(max-width:600px){.container{width:min(100% - 28px,1180px)}header{padding:10px 10px}header.scrolled{padding:7px 10px}.nav{padding:9px 11px;border-radius:14px}.brand{min-width:0}.brand img{width:39px;height:39px}.brand small{font-size:7px}.section{padding:78px 0}.hero{padding:110px 0 65px}.hero h1{font-size:46px}.hero p,.about-copy p,.student-copy p{font-size:16px;line-height:1.75}.hero-image{height:520px;border-radius:18px}.hero-card{left:12px;right:12px;bottom:12px}.hero-card b{font-size:15px}.photo-stack{padding:0 25px 25px 0}.photo-main{height:440px}.photo-small{width:52%;height:180px;border-width:7px}.course-gallery{grid-template-columns:1fr 1fr}.course-gallery .large{height:390px}.course-gallery .small{height:188px}.why-grid{grid-template-columns:1fr;gap:12px}.why-card{min-height:180px}.icon{margin-bottom:35px}.student-gallery{grid-template-columns:1fr 1fr}.student-gallery .tall{height:450px}.student-gallery .square{height:218px}.admissions{padding:82px 0}.admissions p{font-size:16px}.actions .btn{width:100%}.contact-strip{gap:15px;line-height:1.7}.footer-grid{grid-template-columns:1fr;gap:35px}.footer-grid>div:first-child{grid-column:auto}.footer-bottom{flex-direction:column;text-align:center;margin-top:35px}.eyebrow{font-size:9px}}
+</style>
 </head>
-<body class="bg-paper-100 text-navy-950 font-sans antialiased selection:bg-brass-300 selection:text-navy-950">
-
-<!-- ==========================================
-     HEADER / NAVIGATION
-========================================== -->
-<header id="siteHeader" class="sticky top-0 left-0 right-0 z-50 bg-paper-100/95 backdrop-blur-sm border-b border-paper-300 transition-shadow duration-300">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
-
-        <!-- Logo Area -->
-        <a href="#home" class="flex items-center gap-3 flex-shrink-0">
-            <div class="w-10 h-10 flex-shrink-0">
-                <img src="sai sidd logo.png" alt="Sai Sidd College of Allied Health Sciences Logo"
-                     class="w-full h-full object-contain"
-                     onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'w-10 h-10 rounded-md bg-navy-900 border border-brass-500 flex items-center justify-center font-serif font-semibold text-brass-300 text-sm\'>SS</div>';">
-            </div>
-            <div class="flex flex-col leading-tight">
-                <span class="font-serif font-semibold text-[17px] text-navy-950">Sai Sidd</span>
-                <span class="text-[10px] text-navy-700/70 tracking-wide">College of Allied Health Sciences</span>
-            </div>
-        </a>
-
-        <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center gap-8" aria-label="Main Navigation">
-            <a href="#home"         class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">Home</a>
-            <a href="#about"        class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">About</a>
-            <a href="#courses"      class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">Courses</a>
-            <a href="#why"          class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">Why Sai Sidd</a>
-            <a href="#student-life" class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">Student Life</a>
-            <a href="#admissions"   class="nav-link text-[13.5px] font-medium text-navy-800 hover:text-brass-600 transition-colors">Admissions</a>
-        </nav>
-
-        <!-- Header Action CTAs -->
-        <div class="hidden sm:flex items-center gap-2.5">
-            <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-               target="_blank" rel="noopener"
-               class="px-3.5 py-2 text-[12.5px] font-semibold text-clinic-600 border border-clinic-500/40 rounded-md hover:bg-clinic-500 hover:text-white transition-colors flex items-center gap-1.5">
-                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
-            </a>
-            <a href="#admissions" class="btn-brass px-4 py-2 text-[12.5px] rounded-md">Admissions</a>
-        </div>
-
-        <!-- Mobile Menu Toggle -->
-        <button id="menuBtn" onclick="toggleMenu()" aria-label="Toggle Navigation Menu" class="lg:hidden p-2 -mr-2 text-navy-900">
-            <i data-lucide="menu" id="menuIcon" class="w-6 h-6"></i>
-        </button>
-    </div>
-
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="lg:hidden border-t border-paper-300 bg-paper-100">
-        <div class="max-w-6xl mx-auto px-5 py-5 space-y-1">
-            <a href="#home"         onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">Home</a>
-            <a href="#about"        onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">About</a>
-            <a href="#courses"      onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">Courses</a>
-            <a href="#why"          onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">Why Sai Sidd</a>
-            <a href="#student-life" onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">Student Life</a>
-            <a href="#admissions"   onclick="toggleMenu()" class="block px-2 py-2.5 text-[15px] font-medium text-navy-900">Admissions</a>
-            <div class="pt-4 border-t border-paper-300 flex flex-col gap-2.5 mt-2">
-                <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-                   target="_blank" rel="noopener" onclick="toggleMenu()"
-                   class="w-full py-3 text-center text-[13px] font-semibold border border-clinic-500/40 text-clinic-600 rounded-md flex items-center justify-center gap-2">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Enquiry
-                </a>
-                <a href="#admissions" onclick="toggleMenu()" class="btn-brass w-full py-3 text-center text-[13px] rounded-md">Admissions</a>
-                <a href="tel:+917204023279" class="w-full py-3 text-center text-[13px] font-semibold bg-navy-900 text-white rounded-md flex items-center justify-center gap-2">
-                    <i data-lucide="phone-call" class="w-4 h-4 text-brass-300"></i> Call +91 7204023279
-                </a>
-            </div>
-        </div>
-    </div>
+<body>
+<header id="siteHeader">
+<nav class="nav">
+<a href="#home" class="brand" aria-label="Sai Sidd College of Allied Health Sciences">
+<img src="sai sidd logo.png" alt="Sai Sidd College of Allied Health Sciences Logo" onerror="this.style.display='none'">
+<span><strong>Sai Sidd</strong><small>College of Allied Health Sciences</small></span>
+</a>
+<div class="links" aria-label="Main navigation">
+<a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#why">Why Sai Sidd</a><a href="#student-life">Student Life</a><a href="#admissions">Admissions</a>
+</div>
+<a href="#admissions" class="nav-cta">Admissions</a>
+<button class="menu" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false"><i data-lucide="menu"></i></button>
+</nav>
+<div class="mobile" id="mobileMenu"><div class="mobile-inner">
+<a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#why">Why Sai Sidd</a><a href="#student-life">Student Life</a><a href="#admissions">Admissions</a>
+</div></div>
 </header>
 
-
-<!-- ==========================================
-     MARQUEE STRIP
-========================================== -->
-<div class="marquee-wrap bg-navy-950 border-b border-navy-800 py-2.5 overflow-hidden">
-    <div class="marquee-track">
-        <div class="flex items-center gap-10 pr-10">
-            <span class="flex items-center gap-2 text-[12px] font-semibold tracking-wide text-brass-300 whitespace-nowrap"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Learn Today. Care Tomorrow.</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="user-check" class="w-3.5 h-3.5 text-brass-300"></i> Experienced Faculty</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="flask-conical" class="w-3.5 h-3.5 text-brass-300"></i> Practical Training</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="stethoscope" class="w-3.5 h-3.5 text-brass-300"></i> Clinical Exposure</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="building-2" class="w-3.5 h-3.5 text-brass-300"></i> Modern Facilities</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-brass-300"></i> Career-Focused Education</span>
-            <span class="flex items-center gap-2 text-[12px] font-semibold tracking-wide text-brass-300 whitespace-nowrap"><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i> Admissions Open — Enquire Now</span>
-        </div>
-        <div class="flex items-center gap-10 pr-10" aria-hidden="true">
-            <span class="flex items-center gap-2 text-[12px] font-semibold tracking-wide text-brass-300 whitespace-nowrap"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Learn Today. Care Tomorrow.</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="user-check" class="w-3.5 h-3.5 text-brass-300"></i> Experienced Faculty</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="flask-conical" class="w-3.5 h-3.5 text-brass-300"></i> Practical Training</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="stethoscope" class="w-3.5 h-3.5 text-brass-300"></i> Clinical Exposure</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="building-2" class="w-3.5 h-3.5 text-brass-300"></i> Modern Facilities</span>
-            <span class="flex items-center gap-2 text-[12px] font-medium tracking-wide text-navy-100/80 whitespace-nowrap"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-brass-300"></i> Career-Focused Education</span>
-            <span class="flex items-center gap-2 text-[12px] font-semibold tracking-wide text-brass-300 whitespace-nowrap"><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i> Admissions Open — Enquire Now</span>
-        </div>
-    </div>
+<main>
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div class="reveal">
+<div class="eyebrow">Sai Sidd College of Allied Health Sciences</div>
+<h1>Sai Sidd College of <span>Allied Health Sciences</span></h1>
+<div class="tag">Learn Today. Care Tomorrow.</div>
+<p>Build the knowledge, skills and confidence to become a healthcare professional.</p>
+<div class="actions"><a class="btn btn-gold" href="#courses">Explore Courses <i data-lucide="arrow-up-right"></i></a><a class="btn btn-dark" href="#admissions">Admissions <i data-lucide="arrow-right"></i></a></div>
+<div class="hero-contact"><a href="tel:+917204023279">+91 7204023279</a><a href="tel:+919535954516">+91 9535954516</a><a href="mailto:info@saisidd.edu.in">info@saisidd.edu.in</a></div>
 </div>
-
-
-<!-- ==========================================
-     HERO SECTION
-========================================== -->
-<section id="home" class="bg-paper-100">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-16 lg:py-20">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
-            <!-- Left: Editorial Content -->
-            <div class="lg:col-span-7 space-y-7">
-                <div class="rise rise-1 flex items-center gap-2.5 text-brass-600">
-                    <span class="w-6 h-px bg-brass-500"></span>
-                    <span class="text-[12px] font-semibold tracking-wide">Institutional Excellence</span>
-                </div>
-
-                <h1 class="rise rise-2 font-serif font-semibold text-navy-950 leading-[1.08] text-4xl sm:text-5xl lg:text-[3.4rem]">
-                    Sai Sidd College<br>of Allied Health<br>Sciences
-                </h1>
-
-                <p class="rise rise-3 font-serif italic text-2xl sm:text-3xl text-brass-600">
-                    Learn Today. Care Tomorrow.
-                </p>
-
-                <p class="rise rise-3 text-navy-700 text-base sm:text-lg leading-relaxed max-w-md">
-                    Build the knowledge, skills and confidence to become a healthcare professional.
-                </p>
-
-                <div class="rise rise-4 flex flex-col sm:flex-row gap-3 pt-1">
-                    <a href="#courses" class="btn-brass px-7 py-3.5 text-[13px] rounded-md text-center flex items-center justify-center gap-2">
-                        Explore Courses <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                    <a href="#admissions" class="btn-navy px-7 py-3.5 text-[13px] rounded-md text-center flex items-center justify-center gap-2">
-                        <i data-lucide="graduation-cap" class="w-4 h-4 text-brass-300"></i> Admissions
-                    </a>
-                </div>
-
-                <div class="rise rise-5 pt-5 border-t border-paper-300 flex flex-wrap gap-x-6 gap-y-2.5 text-[13px] text-navy-700 font-medium">
-                    <a href="tel:+917204023279" class="flex items-center gap-1.5 hover:text-brass-600 transition-colors">
-                        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brass-600"></i> +91 7204023279
-                    </a>
-                    <a href="tel:+919535954516" class="flex items-center gap-1.5 hover:text-brass-600 transition-colors">
-                        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brass-600"></i> +91 9535954516
-                    </a>
-                    <a href="mailto:info@saisidd.edu.in" class="flex items-center gap-1.5 hover:text-brass-600 transition-colors">
-                        <i data-lucide="mail" class="w-3.5 h-3.5 text-brass-600"></i> info@saisidd.edu.in
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right: Visual -->
-            <div class="rise rise-3 lg:col-span-5">
-                <div class="relative max-w-sm mx-auto lg:max-w-none">
-                    <div class="frame rounded-lg border border-paper-300 shadow-sm aspect-[4/5]">
-                        <img src="photos/IMG_0229.JPG"
-                             alt="Sai Sidd College of Allied Health Sciences — students in practical healthcare training"
-                             class="w-full h-full object-cover object-center">
-                    </div>
-                    <div class="absolute -bottom-5 left-5 right-5 bg-paper-50 border border-paper-300 rounded-md px-4 py-3 shadow-md flex items-center justify-between">
-                        <span class="font-serif text-sm text-navy-950">Academic Excellence</span>
-                        <span class="text-[10px] bg-navy-900 text-brass-300 font-semibold px-2.5 py-1 rounded tracking-wide">Sai Sidd</span>
-                    </div>
-                    <div class="hidden sm:flex absolute -top-4 -right-4 items-center gap-2.5 bg-navy-900 text-white rounded-md px-3.5 py-3 border border-brass-500/40 shadow-lg">
-                        <i data-lucide="award" class="w-4.5 h-4.5 text-brass-300"></i>
-                        <div class="leading-tight">
-                            <p class="text-[11px] font-semibold">Healthcare</p>
-                            <p class="text-[9.5px] text-brass-300 tracking-wide">Education</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- ==========================================
-     ABOUT SECTION
-========================================== -->
-<section id="about" class="py-12 sm:py-20 bg-paper-50 border-t border-paper-300">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            <!-- Left: Image Composition -->
-            <div class="lg:col-span-5 order-2 lg:order-1">
-                <div class="relative max-w-sm mx-auto lg:max-w-none">
-                    <div class="frame rounded-lg border border-paper-300 shadow-sm aspect-[4/5]">
-                        <img src="photos/IMG_0215.JPG" alt="Sai Sidd students in practical healthcare training"
-                             class="w-full h-full object-cover object-top">
-                    </div>
-                    <div class="absolute -bottom-8 -right-6 w-40 sm:w-52 frame border-4 border-paper-50 shadow-lg rounded-md">
-                        <img src="photos/IMG_0218.JPG" alt="Sai Sidd healthcare faculty and clinical learning"
-                             class="w-full aspect-[4/3] object-cover object-top">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right: Content -->
-            <div class="lg:col-span-7 space-y-6 order-1 lg:order-2 lg:pl-6">
-                <div class="flex items-center gap-2.5 text-brass-600">
-                    <span class="w-6 h-px bg-brass-500"></span>
-                    <span class="text-[12px] font-semibold tracking-wide">About Sai Sidd</span>
-                </div>
-                <h2 class="font-serif font-semibold text-navy-950 text-3xl sm:text-4xl leading-tight">
-                    Your Start in Healthcare
-                </h2>
-                <p class="text-navy-700 text-base sm:text-lg leading-relaxed max-w-lg">
-                    At Sai Sidd, students gain a strong foundation in healthcare through classroom learning, practical training and clinical exposure.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#admissions" class="btn-navy inline-flex items-center justify-center gap-2 px-6 py-3 text-[13px] rounded-md">
-                        <i data-lucide="graduation-cap" class="w-4 h-4 text-brass-300"></i> Admissions
-                    </a>
-                    <a href="#courses" class="btn-line inline-flex items-center justify-center gap-2 px-6 py-3 text-[13px] rounded-md">
-                        <i data-lucide="book-open" class="w-4 h-4"></i> View Courses
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- ==========================================
-     COURSES SECTION
-========================================== -->
-<section id="courses" class="py-12 sm:py-20 bg-navy-950 text-white">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            <!-- Left: Content -->
-            <div class="lg:col-span-6 space-y-6">
-                <div class="flex items-center gap-2.5 text-brass-300">
-                    <span class="w-6 h-px bg-brass-500"></span>
-                    <span class="text-[12px] font-semibold tracking-wide">Our Courses</span>
-                </div>
-                <h2 class="font-serif font-semibold text-white text-3xl sm:text-4xl leading-tight">
-                    Choose Your Path in Healthcare
-                </h2>
-                <p class="text-navy-100/70 text-base sm:text-lg leading-relaxed max-w-md">
-                    Explore our allied health science programmes and find the course that matches your interests and career goals.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20courses%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-                       target="_blank" rel="noopener"
-                       class="btn-brass inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] rounded-md">
-                        View Courses &rarr;
-                    </a>
-                    <a href="#admissions" class="btn-line-light inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] rounded-md">
-                        <i data-lucide="graduation-cap" class="w-4 h-4"></i> Admissions
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right: Visual Composition -->
-            <div class="lg:col-span-6">
-                <div class="grid grid-cols-2 gap-4 max-w-md mx-auto lg:max-w-none">
-                    <div class="frame rounded-lg border border-navy-700 row-span-2 relative min-h-[280px]">
-                        <img src="photos/IMG_0219.JPG" alt="Sai Sidd healthcare laboratory training"
-                             class="w-full h-full object-cover object-top">
-                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4">
-                            <span class="px-3 py-1.5 rounded bg-brass-500 text-navy-950 font-serif font-semibold text-xs">Healthcare Studies</span>
-                        </div>
-                    </div>
-                    <div class="frame rounded-lg border border-navy-700 aspect-[4/3]">
-                        <img src="photos/IMG_0212.JPG" alt="Sai Sidd academic facilities" class="w-full h-full object-cover object-top">
-                    </div>
-                    <div class="rounded-lg bg-navy-800 border border-navy-700 p-5 flex flex-col justify-between">
-                        <i data-lucide="book-open" class="w-5 h-5 text-brass-300"></i>
-                        <div>
-                            <p class="font-serif font-semibold text-white text-sm">Academic Excellence</p>
-                            <p class="text-navy-100/60 text-xs mt-1">Sai Sidd Allied Health</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- ==========================================
-     WHY SAI SIDD SECTION
-========================================== -->
-<section id="why" class="py-12 sm:py-20 bg-paper-100 border-t border-paper-300">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-
-        <div class="max-w-xl mb-10 sm:mb-12">
-            <div class="flex items-center gap-2.5 text-brass-600 mb-3">
-                <span class="w-6 h-px bg-brass-500"></span>
-                <span class="text-[12px] font-semibold tracking-wide">Why Sai Sidd</span>
-            </div>
-            <h2 class="font-serif font-semibold text-navy-950 text-3xl sm:text-4xl leading-tight">
-                Learn Beyond the Classroom
-            </h2>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="user-check" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Experienced faculty</h3>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="flask-conical" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Practical training</h3>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="stethoscope" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Clinical exposure</h3>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="building-2" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Modern facilities</h3>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="users" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Supportive learning environment</h3>
-            </div>
-
-            <div class="feature">
-                <div class="feature-icon w-11 h-11 rounded-md flex items-center justify-center mb-5 text-navy-800">
-                    <i data-lucide="briefcase" class="w-5 h-5"></i>
-                </div>
-                <h3 class="text-lg font-serif font-semibold text-navy-950">Career-focused education</h3>
-            </div>
-
-        </div>
-
-        <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3">
-            <a href="#admissions" class="btn-navy inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] rounded-md">
-                <i data-lucide="graduation-cap" class="w-4 h-4 text-brass-300"></i> Admissions
-            </a>
-            <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-               target="_blank" rel="noopener"
-               class="btn-line inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[13px] rounded-md">
-                <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us
-            </a>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ==========================================
-     STUDENT LIFE SECTION
-========================================== -->
-<section id="student-life" class="py-12 sm:py-20 bg-paper-50 border-t border-paper-300">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-            <!-- Left: Content -->
-            <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
-                <div class="flex items-center gap-2.5 text-brass-600">
-                    <span class="w-6 h-px bg-brass-500"></span>
-                    <span class="text-[12px] font-semibold tracking-wide">Student Life</span>
-                </div>
-                <h2 class="font-serif font-semibold text-navy-950 text-3xl sm:text-4xl leading-tight">
-                    Learn. Connect. Grow.
-                </h2>
-                <p class="text-navy-700 text-base sm:text-lg leading-relaxed max-w-md">
-                    From academics and practical sessions to campus activities, students get opportunities to learn new skills, build confidence and enjoy their college journey.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="#admissions" class="btn-navy inline-flex items-center justify-center gap-2 px-6 py-3 text-[13px] rounded-md">
-                        <i data-lucide="graduation-cap" class="w-4 h-4 text-brass-300"></i> Admissions
-                    </a>
-                    <a href="tel:+917204023279" class="btn-line inline-flex items-center justify-center gap-2 px-6 py-3 text-[13px] rounded-md">
-                        <i data-lucide="phone-call" class="w-4 h-4"></i> Call Us
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right: Image Collage -->
-            <div class="lg:col-span-7 order-1 lg:order-2">
-                <div class="grid grid-cols-12 gap-3 sm:gap-4 max-w-lg mx-auto lg:max-w-none">
-                    <div class="col-span-7 frame rounded-lg border border-paper-300 shadow-sm aspect-[3/4]">
-                        <img src="photos/IMG_0222.JPG" alt="Sai Sidd student life and campus engagement"
-                             class="w-full h-full object-cover object-top">
-                    </div>
-                    <div class="col-span-5 flex flex-col gap-3 sm:gap-4">
-                        <div class="frame rounded-lg border border-paper-300 shadow-sm flex-1 aspect-square">
-                            <img src="photos/IMG_0209.JPG" alt="Students engaged in collaborative academic learning"
-                                 class="w-full h-full object-cover object-top">
-                        </div>
-                        <div class="frame rounded-lg border border-paper-300 shadow-sm flex-1 aspect-square">
-                            <img src="photos/IMG_0229.JPG" alt="Students in clinical learning environment"
-                                 class="w-full h-full object-cover object-top">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<!-- ==========================================
-     ADMISSIONS SECTION
-========================================== -->
-<section id="admissions" class="py-12 sm:py-20 bg-navy-950 text-white border-t border-navy-800 text-center">
-    <div class="max-w-3xl mx-auto px-5 sm:px-8 space-y-7">
-
-        <div class="space-y-4">
-            <div class="flex items-center justify-center gap-2.5 text-brass-300">
-                <span class="w-6 h-px bg-brass-500"></span>
-                <span class="text-[12px] font-semibold tracking-wide">Admissions</span>
-                <span class="w-6 h-px bg-brass-500"></span>
-            </div>
-            <h2 class="font-serif font-semibold text-white text-4xl sm:text-5xl leading-tight">
-                Your Healthcare Career<br>Starts Here
-            </h2>
-            <p class="text-navy-100/70 text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
-                Take the first step towards a rewarding career in healthcare.
-            </p>
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20apply%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-               target="_blank" rel="noopener"
-               class="btn-brass w-full sm:w-auto px-9 py-3.5 text-[13px] rounded-md flex items-center justify-center gap-2">
-                Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-            <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-               target="_blank" rel="noopener"
-               class="btn-line-light w-full sm:w-auto px-9 py-3.5 text-[13px] rounded-md flex items-center justify-center gap-2">
-                <i data-lucide="message-circle" class="w-4 h-4"></i> Enquire Now
-            </a>
-        </div>
-
-        <div class="grid sm:grid-cols-3 gap-4 pt-4 text-left">
-            <a href="tel:+917204023279"
-               class="border border-navy-700 hover:border-brass-500/60 rounded-lg p-5 transition-colors text-center space-y-2 block group">
-                <i data-lucide="phone-call" class="w-5 h-5 text-brass-300 mx-auto"></i>
-                <p class="text-[11px] text-navy-100/60 font-semibold tracking-wide">Admissions Desk 1</p>
-                <p class="text-sm font-medium text-white group-hover:text-brass-300 transition-colors">+91 7204023279</p>
-            </a>
-            <a href="tel:+919535954516"
-               class="border border-navy-700 hover:border-brass-500/60 rounded-lg p-5 transition-colors text-center space-y-2 block group">
-                <i data-lucide="phone-call" class="w-5 h-5 text-brass-300 mx-auto"></i>
-                <p class="text-[11px] text-navy-100/60 font-semibold tracking-wide">Admissions Desk 2</p>
-                <p class="text-sm font-medium text-white group-hover:text-brass-300 transition-colors">+91 9535954516</p>
-            </a>
-            <a href="mailto:info@saisidd.edu.in"
-               class="border border-navy-700 hover:border-brass-500/60 rounded-lg p-5 transition-colors text-center space-y-2 block group">
-                <i data-lucide="mail" class="w-5 h-5 text-brass-300 mx-auto"></i>
-                <p class="text-[11px] text-navy-100/60 font-semibold tracking-wide">Email Enquiry</p>
-                <p class="text-sm font-medium text-white group-hover:text-brass-300 transition-colors break-all">info@saisidd.edu.in</p>
-            </a>
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ==========================================
-     FOOTER
-========================================== -->
-<footer class="bg-navy-950 border-t border-navy-800 text-white">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 sm:py-10">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-10">
-
-            <!-- Column 1: Branding -->
-            <div class="lg:col-span-5 space-y-3">
-                <div class="flex items-center gap-3">
-                    <img src="sai sidd logo.png" alt="Sai Sidd College of Allied Health Sciences Logo"
-                         class="h-11 w-auto object-contain"
-                         onerror="this.onerror=null;this.style.display='none';">
-                    <div class="flex flex-col leading-tight">
-                        <span class="font-serif font-semibold text-base text-white">Sai Sidd</span>
-                        <span class="text-[10px] text-brass-300 tracking-wide">College of Allied Health Sciences</span>
-                    </div>
-                </div>
-                <p class="text-navy-100/60 text-sm leading-relaxed max-w-sm font-serif italic">
-                    Learn Today. Care Tomorrow.
-                </p>
-                <div class="pt-1 text-[13px] text-navy-100/70 space-y-1.5">
-                    <p class="flex items-center gap-2">
-                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brass-300 flex-shrink-0"></i>
-                        <span>#254 Hebbal Industrial Area, Mysuru</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i data-lucide="phone" class="w-3.5 h-3.5 text-brass-300 flex-shrink-0"></i>
-                        <span>+91 7204023279 &middot; +91 9535954516</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i data-lucide="mail" class="w-3.5 h-3.5 text-brass-300 flex-shrink-0"></i>
-                        <span>info@saisidd.edu.in</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Column 2: Navigation -->
-            <div class="lg:col-span-3 space-y-3">
-                <p class="text-[12px] font-semibold text-brass-300 tracking-wide">Navigation</p>
-                <div class="space-y-1.5 text-[13px]">
-                    <a href="#home"         class="block text-navy-100/70 hover:text-white transition-colors">Home</a>
-                    <a href="#about"        class="block text-navy-100/70 hover:text-white transition-colors">About</a>
-                    <a href="#courses"      class="block text-navy-100/70 hover:text-white transition-colors">Courses</a>
-                    <a href="#why"          class="block text-navy-100/70 hover:text-white transition-colors">Why Sai Sidd</a>
-                    <a href="#student-life" class="block text-navy-100/70 hover:text-white transition-colors">Student Life</a>
-                    <a href="#admissions"   class="block text-navy-100/70 hover:text-white transition-colors">Admissions</a>
-                </div>
-            </div>
-
-            <!-- Column 3: Contact & CTAs -->
-            <div class="lg:col-span-4 space-y-3">
-                <p class="text-[12px] font-semibold text-brass-300 tracking-wide">Admissions Desk</p>
-                <div class="space-y-1.5 text-[13px] text-navy-100/70">
-                    <a href="tel:+917204023279" class="flex items-center gap-2 hover:text-white transition-colors">
-                        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brass-300"></i> +91 7204023279
-                    </a>
-                    <a href="tel:+919535954516" class="flex items-center gap-2 hover:text-white transition-colors">
-                        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-brass-300"></i> +91 9535954516
-                    </a>
-                    <a href="mailto:info@saisidd.edu.in" class="flex items-center gap-2 hover:text-white transition-colors">
-                        <i data-lucide="mail" class="w-3.5 h-3.5 text-brass-300"></i> info@saisidd.edu.in
-                    </a>
-                </div>
-                <div class="pt-2 flex items-center gap-2.5">
-                    <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20apply%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-                       target="_blank" rel="noopener"
-                       class="btn-brass flex-1 py-2.5 text-center text-[12px] rounded-md flex items-center justify-center gap-1.5">
-                        Apply Now <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-                    </a>
-                    <a href="https://wa.me/917204023279"
-                       target="_blank" rel="noopener"
-                       class="px-3 py-2.5 border border-clinic-500/50 text-clinic-500 hover:bg-clinic-500 hover:text-white rounded-md transition-colors flex items-center justify-center">
-                        <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Copyright Bar -->
-    <div class="border-t border-navy-900 py-3 px-5 sm:px-8">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center text-[11px] text-navy-100/50">
-            <p>&copy; 2026 Sai Sidd College of Allied Health Sciences. All Rights Reserved.</p>
-            <p>Developed by <a href="https://www.instagram.com/cloudads.in/" target="_blank" rel="noopener noreferrer" class="text-brass-300 hover:text-brass-100 font-semibold transition-colors">cloudads.in</a></p>
-        </div>
-    </div>
-</footer>
-
-
-<!-- ==========================================
-     FLOATING WHATSAPP CTA
-========================================== -->
-<a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-   target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"
-   class="fab-whatsapp w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-clinic-500 hover:bg-clinic-600 text-white flex items-center justify-center">
-    <span class="fab-ping"></span>
-    <i data-lucide="message-circle" class="w-6 h-6 relative"></i>
-</a>
-
-<!-- ==========================================
-     MOBILE STICKY CTA BAR
-========================================== -->
-<div id="mobileCtaBar" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-navy-950 border-t border-navy-800 flex items-stretch">
-    <a href="tel:+917204023279" class="flex-1 flex flex-col items-center justify-center gap-0.5 py-2.5 text-white border-r border-navy-800">
-        <i data-lucide="phone-call" class="w-4 h-4 text-brass-300"></i>
-        <span class="text-[10px] font-semibold">Call</span>
-    </a>
-    <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences."
-       target="_blank" rel="noopener"
-       class="flex-1 flex flex-col items-center justify-center gap-0.5 py-2.5 text-white border-r border-navy-800">
-        <i data-lucide="message-circle" class="w-4 h-4 text-brass-300"></i>
-        <span class="text-[10px] font-semibold">WhatsApp</span>
-    </a>
-    <a href="#admissions" class="flex-[1.3] flex items-center justify-center gap-1.5 py-2.5 bg-brass-500 text-navy-950 font-bold text-[12.5px]">
-        <i data-lucide="graduation-cap" class="w-4 h-4"></i> Admissions
-    </a>
+<div class="visual reveal delay2"><div class="corner"></div><div class="hero-image"><img src="photos/IMG_0229.JPG" alt="Sai Sidd College of Allied Health Sciences" fetchpriority="high"><div class="hero-card"><b>Learn Today. Care Tomorrow.</b><i data-lucide="arrow-up-right"></i></div></div></div>
 </div>
+</section>
 
-<!-- ==========================================
-     SCRIPTS
-========================================== -->
+<section class="section about" id="about"><div class="container split">
+<div class="photo-stack reveal"><div class="photo-main"><img src="photos/IMG_0215.JPG" alt="Sai Sidd students in healthcare learning"></div><div class="photo-small"><img src="photos/IMG_0218.JPG" alt="Sai Sidd healthcare learning"></div></div>
+<div class="about-copy reveal delay1"><div class="eyebrow">About Sai Sidd</div><div class="section-head"><h2>Your Start in <span class="gold">Healthcare</span></h2></div><p>At Sai Sidd, students gain a strong foundation in healthcare through classroom learning, practical training and clinical exposure.</p><div class="actions"><a class="btn btn-dark" href="#admissions">Admissions <i data-lucide="arrow-right"></i></a></div></div>
+</div></section>
+
+<section class="section courses" id="courses"><div class="container course-layout">
+<div class="section-head reveal"><div class="eyebrow" style="color:var(--gold2)">Our Courses</div><h2>Choose Your Path in <span class="gold">Healthcare</span></h2><p>Explore our allied health science programmes and find the course that matches your interests and career goals.</p><div class="actions" style="margin-top:30px"><a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20courses%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">View Courses → <i data-lucide="arrow-up-right"></i></a></div></div>
+<div class="course-gallery reveal delay2"><div class="large"><img src="photos/IMG_0219.JPG" alt="Sai Sidd healthcare learning"></div><div class="small"><img src="photos/IMG_0212.JPG" alt="Sai Sidd facilities"></div><div class="small"><img src="photos/IMG_0222.JPG" alt="Sai Sidd student learning"></div></div>
+</div></section>
+
+<section class="section why" id="why"><div class="container"><div class="section-head reveal"><div class="eyebrow">Why Sai Sidd</div><h2>Learn Beyond the Classroom</h2></div><div class="why-grid">
+<div class="why-card reveal"><div class="icon"><i data-lucide="user-check"></i></div><h3>Experienced faculty</h3></div>
+<div class="why-card reveal delay1"><div class="icon"><i data-lucide="flask-conical"></i></div><h3>Practical training</h3></div>
+<div class="why-card reveal delay2"><div class="icon"><i data-lucide="stethoscope"></i></div><h3>Clinical exposure</h3></div>
+<div class="why-card reveal"><div class="icon"><i data-lucide="building-2"></i></div><h3>Modern facilities</h3></div>
+<div class="why-card reveal delay1"><div class="icon"><i data-lucide="users"></i></div><h3>Supportive learning environment</h3></div>
+<div class="why-card reveal delay2"><div class="icon"><i data-lucide="briefcase"></i></div><h3>Career-focused education</h3></div>
+</div><div class="actions reveal" style="justify-content:center;margin-top:45px"><a class="btn btn-dark" href="#admissions">Admissions <i data-lucide="arrow-right"></i></a></div></div></section>
+
+<section class="section student" id="student-life"><div class="container split">
+<div class="student-copy reveal"><div class="eyebrow">Student Life</div><div class="section-head"><h2>Learn. Connect. <span class="gold">Grow.</span></h2></div><p>From academics and practical sessions to campus activities, students get opportunities to learn new skills, build confidence and enjoy their college journey.</p><div class="actions"><a class="btn btn-dark" href="#admissions">Admissions <i data-lucide="arrow-right"></i></a></div></div>
+<div class="student-gallery reveal delay1"><div class="tall"><img src="photos/IMG_0222.JPG" alt="Sai Sidd student life"></div><div class="square"><img src="photos/IMG_0209.JPG" alt="Sai Sidd student learning"></div><div class="square"><img src="photos/IMG_0229.JPG" alt="Sai Sidd college learning"></div></div>
+</div></section>
+
+<section class="admissions" id="admissions"><div class="container admissions-inner"><div class="eyebrow" style="color:var(--gold2);justify-content:center">Admissions</div><h2 class="reveal">Your Healthcare Career <span class="gold">Starts Here</span></h2><p class="reveal delay1">Take the first step towards a rewarding career in healthcare.</p><div class="actions reveal delay2"><a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20apply%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">Apply Now <i data-lucide="arrow-up-right"></i></a><a class="btn" style="border:1px solid var(--gold);color:var(--gold2)" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">Enquire Now <i data-lucide="message-circle"></i></a></div><div class="contact-strip"><a href="tel:+917204023279">+91 7204023279</a><a href="tel:+919535954516">+91 9535954516</a><a href="mailto:info@saisidd.edu.in">info@saisidd.edu.in</a></div></div></section>
+</main>
+
+<footer><div class="container"><div class="footer-grid"><div><div class="footer-brand"><img src="sai sidd logo.png" alt="Sai Sidd College of Allied Health Sciences Logo"><span><strong>Sai Sidd College of Allied Health Sciences</strong></span></div><div class="footer-contact">[Location] · [Phone] · [Email]</div></div><div><p class="footer-title">Navigation</p><div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#courses">Courses</a><a href="#why">Why Sai Sidd</a><a href="#student-life">Student Life</a><a href="#admissions">Admissions</a></div></div><div><p class="footer-title">Admissions</p><div class="footer-links"><a href="#admissions">Apply Now</a><a href="#admissions">Enquire Now</a><a href="tel:+917204023279">+91 7204023279</a><a href="mailto:info@saisidd.edu.in">info@saisidd.edu.in</a></div></div></div><div class="footer-bottom"><span>© 2026 Sai Sidd College of Allied Health Sciences. All Rights Reserved.</span><span>Developed by <a href="https://www.instagram.com/cloudads.in/" target="_blank" rel="noopener noreferrer">cloudads.in</a></span></div></div></footer>
 <script>
-    lucide.createIcons();
-
-    function toggleMenu() {
-        var menu = document.getElementById('mobileMenu');
-        var icon = document.getElementById('menuIcon');
-        var isOpen = menu.classList.contains('open');
-        if (isOpen) {
-            menu.classList.remove('open');
-            icon.setAttribute('data-lucide', 'menu');
-        } else {
-            menu.classList.add('open');
-            icon.setAttribute('data-lucide', 'x');
-        }
-        lucide.createIcons();
-    }
-
-    var header = document.getElementById('siteHeader');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 12) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    }, { passive: true });
-
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            var targetId = this.getAttribute('href');
-            if (targetId === '#' || targetId === '') return;
-            var target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                var headerOffset = document.getElementById('siteHeader').offsetHeight + 8;
-                var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-            }
-        });
-    });
+lucide.createIcons();
+const header=document.getElementById('siteHeader');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const menuBtn=document.getElementById('menuBtn'),mobile=document.getElementById('mobileMenu');
+menuBtn.addEventListener('click',()=>{const open=mobile.classList.toggle('open');menuBtn.setAttribute('aria-expanded',open);menuBtn.innerHTML=open?'<i data-lucide="x"></i>':'<i data-lucide="menu"></i>';lucide.createIcons()});
+document.querySelectorAll('.mobile a').forEach(a=>a.addEventListener('click',()=>{mobile.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.innerHTML='<i data-lucide="menu"></i>';lucide.createIcons()}));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
-
 </body>
 </html>
