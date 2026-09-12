@@ -1073,6 +1073,153 @@
     @media (prefers-reduced-motion: reduce) {
       * { scroll-behavior: auto !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
+      .ticker-track { animation: none !important; }
+    }
+
+    /* ===== CTA MARQUEE TICKER ===== */
+    .ticker-wrap {
+      background: var(--navy);
+      border-top: 2px solid rgba(212, 175, 55, 0.25);
+      border-bottom: 2px solid rgba(212, 175, 55, 0.25);
+      overflow: hidden;
+      padding: 13px 0;
+      position: relative;
+    }
+    .ticker-wrap::before,
+    .ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+    }
+    .ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: ticker-scroll 38s linear infinite;
+    }
+    .ticker-wrap:hover .ticker-track {
+      animation-play-state: paused;
+    }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      padding: 0 28px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .ticker-item a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .ticker-item a:hover { color: #fff; }
+    .ticker-item i {
+      width: 14px;
+      height: 14px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .ticker-item svg.wa-icon {
+      width: 15px;
+      height: 15px;
+      color: var(--wa-green);
+    }
+    .ticker-sep {
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
+      opacity: 0.7;
+      padding: 0 4px;
+      flex-shrink: 0;
+    }
+    .ticker-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 4px 14px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 11.5px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .ticker-cta i {
+      width: 12px;
+      height: 12px;
+      color: var(--navy);
+    }
+    .ticker-cta:hover { background: #e5b83b !important; color: var(--navy) !important; transform: scale(1.03); }
+
+    /* Reverse scroll marquee */
+    @keyframes ticker-scroll-reverse {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .ticker-reverse .ticker-track {
+      animation: ticker-scroll-reverse 42s linear infinite;
+    }
+    .ticker-reverse:hover .ticker-track {
+      animation-play-state: paused;
+    }
+
+    /* Pillars theme (Between Courses and Why Sai Sidd) */
+    .ticker-pillars {
+      background: #0f2342;
+      border-top: 1px solid rgba(212, 175, 55, 0.35);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    }
+    .ticker-pillars::before {
+      background: linear-gradient(to right, #0f2342 0%, transparent 100%);
+    }
+    .ticker-pillars::after {
+      background: linear-gradient(to left, #0f2342 0%, transparent 100%);
+    }
+
+    /* Admissions contact theme (Between Student Life and Admissions) */
+    .ticker-admit {
+      background: var(--navy-deep);
+      border-top: 2px solid var(--gold);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ticker-admit::before {
+      background: linear-gradient(to right, var(--navy-deep) 0%, transparent 100%);
+    }
+    .ticker-admit::after {
+      background: linear-gradient(to left, var(--navy-deep) 0%, transparent 100%);
+    }
+    .ticker-tag-badge {
+      background: rgba(212, 175, 55, 0.18);
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
   </style>
 </head>
@@ -1203,6 +1350,75 @@
       </div>
     </section>
 
+    <!-- CTA Marquee Ticker (Based on existing website content & actions) -->
+    <div class="ticker-wrap" aria-label="Quick Highlights and Actions">
+      <div class="ticker-track">
+        <!-- Sequence 1 -->
+        <div class="ticker-item">
+          <i data-lucide="graduation-cap"></i>
+          <span>Learn Today. Care Tomorrow.</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <span>Admissions Open</span>
+          <a href="#admissions" class="ticker-cta">Apply Now <i data-lucide="arrow-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="stethoscope"></i>
+          <span>Practical Training &amp; Clinical Exposure</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">WhatsApp Enquiry</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="book-open"></i>
+          <a href="#courses">Explore Courses</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:+917204023279">+91 7204023279</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+
+        <!-- Sequence 2 (Duplicate for continuous infinite loop) -->
+        <div class="ticker-item">
+          <i data-lucide="graduation-cap"></i>
+          <span>Learn Today. Care Tomorrow.</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <span>Admissions Open</span>
+          <a href="#admissions" class="ticker-cta">Apply Now <i data-lucide="arrow-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="stethoscope"></i>
+          <span>Practical Training &amp; Clinical Exposure</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">WhatsApp Enquiry</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="book-open"></i>
+          <a href="#courses">Explore Courses</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:+917204023279">+91 7204023279</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+      </div>
+    </div>
+
     <!-- About Sai Sidd Section -->
     <section class="section about" id="about">
       <div class="container split">
@@ -1288,6 +1504,83 @@
         </div>
       </div>
     </section>
+
+    <!-- Marquee: Educational Pillars (Reverse Scroll, based on Why Sai Sidd pillars) -->
+    <div class="ticker-wrap ticker-pillars ticker-reverse" aria-label="Why Choose Sai Sidd Highlights">
+      <div class="ticker-track">
+        <!-- Sequence 1 -->
+        <div class="ticker-item">
+          <i data-lucide="user-check"></i>
+          <span>Experienced Faculty</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="flask-conical"></i>
+          <span>Practical Training</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="stethoscope"></i>
+          <span>Clinical Exposure</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="building-2"></i>
+          <span>Modern Facilities</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="users"></i>
+          <span>Supportive Learning Environment</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="briefcase"></i>
+          <span>Career-Focused Education</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <a href="#courses" class="ticker-cta">View Courses <i data-lucide="arrow-up-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+
+        <!-- Sequence 2 (Duplicate for continuous infinite loop) -->
+        <div class="ticker-item">
+          <i data-lucide="user-check"></i>
+          <span>Experienced Faculty</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="flask-conical"></i>
+          <span>Practical Training</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="stethoscope"></i>
+          <span>Clinical Exposure</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="building-2"></i>
+          <span>Modern Facilities</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="users"></i>
+          <span>Supportive Learning Environment</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="briefcase"></i>
+          <span>Career-Focused Education</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <a href="#courses" class="ticker-cta">View Courses <i data-lucide="arrow-up-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+      </div>
+    </div>
 
     <!-- Why Sai Sidd Section -->
     <section class="section why" id="why">
@@ -1389,6 +1682,83 @@
         </div>
       </div>
     </section>
+
+    <!-- Marquee: Admissions Action & Contact Strip (Based on Admissions & Contact Info) -->
+    <div class="ticker-wrap ticker-admit" aria-label="Admissions and Contact Information">
+      <div class="ticker-track">
+        <!-- Sequence 1 -->
+        <div class="ticker-item">
+          <span class="ticker-tag-badge">Admissions 2026</span>
+          <span>Your Healthcare Career Starts Here</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <a href="#admissions" class="ticker-cta">Apply Now <i data-lucide="arrow-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">WhatsApp Admissions</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone-call"></i>
+          <a href="tel:+917204023279">+91 7204023279</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:+919535954516">+91 9535954516</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="mail"></i>
+          <a href="mailto:info@saisidd.edu.in">info@saisidd.edu.in</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="sparkles"></i>
+          <span>Learn Today. Care Tomorrow.</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+
+        <!-- Sequence 2 (Duplicate for continuous infinite loop) -->
+        <div class="ticker-item">
+          <span class="ticker-tag-badge">Admissions 2026</span>
+          <span>Your Healthcare Career Starts Here</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <a href="#admissions" class="ticker-cta">Apply Now <i data-lucide="arrow-right"></i></a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">WhatsApp Admissions</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone-call"></i>
+          <a href="tel:+917204023279">+91 7204023279</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:+919535954516">+91 9535954516</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="mail"></i>
+          <a href="mailto:info@saisidd.edu.in">info@saisidd.edu.in</a>
+        </div>
+        <span class="ticker-sep">✦</span>
+        <div class="ticker-item">
+          <i data-lucide="sparkles"></i>
+          <span>Learn Today. Care Tomorrow.</span>
+        </div>
+        <span class="ticker-sep">✦</span>
+      </div>
+    </div>
 
     <!-- Admissions Section -->
     <section class="admissions" id="admissions">
