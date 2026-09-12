@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sai Sidd College of Allied Health Sciences | Learn Today. Care Tomorrow.</title>
-  <meta name="description" content="Sai Sidd College of Allied Health Sciences — Build the knowledge, skills and confidence to become a healthcare professional through classroom learning, practical training and clinical exposure.">
+  <meta name="description" content="Sai Sidd College of Allied Health Sciences â€” Build the knowledge, skills and confidence to become a healthcare professional through classroom learning, practical training and clinical exposure.">
   <meta property="og:title" content="Sai Sidd College of Allied Health Sciences">
   <meta property="og:description" content="Learn Today. Care Tomorrow. Build the knowledge, skills and confidence to become a healthcare professional.">
   <meta property="og:type" content="website">
@@ -56,6 +56,12 @@
     a { text-decoration: none; color: inherit; transition: all 0.25s ease; }
     img, picture { max-width: 100%; height: auto; display: block; }
     button { font-family: inherit; }
+    /* WhatsApp brand icon sizing â€” matches Lucide <i> sizing in each context */
+    svg.wa-icon { flex-shrink: 0; display: inline-block; vertical-align: middle; transition: transform 0.2s ease; }
+    .btn svg.wa-icon { width: 17px; height: 17px; }
+    .btn:hover svg.wa-icon { transform: translate(0, 0); }
+    .top-strip svg.wa-icon { width: 14px; height: 14px; }
+    .floating-wa svg.wa-icon { width: 28px; height: 28px; }
 
     .serif { font-family: 'Playfair Display', Georgia, serif; }
     .container { width: min(1200px, calc(100% - 40px)); margin: 0 auto; }
@@ -420,7 +426,7 @@
     /* Hero Visual */
     .visual { position: relative; }
     .hero-image {
-      height: 590px;
+      aspect-ratio: 3 / 4;
       border-radius: var(--radius-xl);
       overflow: hidden;
       position: relative;
@@ -487,7 +493,7 @@
       padding: 0 45px 45px 0;
     }
     .photo-main {
-      height: 560px;
+      aspect-ratio: 3 / 4;
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
@@ -552,10 +558,9 @@
     }
     .course-gallery .large {
       grid-row: span 2;
-      height: 540px;
     }
     .course-gallery .small {
-      height: 262px;
+      aspect-ratio: 3 / 4;
     }
     .course-gallery > div {
       border-radius: var(--radius-md);
@@ -646,14 +651,21 @@
     .student-gallery {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
+      grid-template-rows: auto auto;
       gap: 16px;
     }
     .student-gallery .tall {
-      height: 560px;
+      aspect-ratio: 3 / 4;
       grid-row: span 2;
     }
     .student-gallery .square {
-      height: 272px;
+      aspect-ratio: 3 / 4;
+    }
+    /* IMG_0209 is 16:9 â€” span full width below the tall+square pair */
+    .student-gallery .landscape {
+      aspect-ratio: 16 / 9;
+      grid-column: 1 / -1;
+      grid-row: auto;
     }
     .student-gallery div {
       border-radius: var(--radius-md);
@@ -926,7 +938,7 @@
     .delay2 { transition-delay: 0.2s; }
     .delay3 { transition-delay: 0.3s; }
 
-    /* ===== RESPONSIVE: TABLET (≤980px) ===== */
+    /* ===== RESPONSIVE: TABLET (â‰¤980px) ===== */
     @media (max-width: 980px) {
       .top-strip { display: none; }
       .links, .nav-actions .nav-phone { display: none; }
@@ -946,7 +958,6 @@
       .hero { padding: 56px 0 68px; min-height: auto; }
       .hero h1 { font-size: clamp(38px, 7vw, 60px); }
       .hero .tag { font-size: clamp(20px, 3.5vw, 28px); }
-      .hero-image { height: min(65vh, 520px); }
       .corner { right: 0; }
 
       .course-gallery { max-width: 680px; margin: 0 auto; }
@@ -964,7 +975,7 @@
       .footer-contact-inline { gap: 12px; flex-wrap: wrap; }
     }
 
-    /* ===== RESPONSIVE: LARGE MOBILE (≤640px) ===== */
+    /* ===== RESPONSIVE: LARGE MOBILE (â‰¤640px) ===== */
     @media (max-width: 640px) {
       .mobile-bar { display: block; }
       .floating-wa { bottom: 80px; right: 16px; width: 50px; height: 50px; }
@@ -979,24 +990,24 @@
       .hero h1 { font-size: clamp(32px, 9.5vw, 44px); margin: 14px 0 12px; }
       .hero .tag { font-size: clamp(17px, 5vw, 22px); margin-bottom: 14px; }
       .hero p { font-size: 15.5px; line-height: 1.75; margin-bottom: 24px; }
-      .hero-image { height: 300px; border-radius: 18px; }
+      .hero-image { border-radius: 18px; }
       .hero-card { left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; }
       .hero-card b { font-size: 14px; }
       .hero-contact { gap: 14px; font-size: 12px; flex-direction: column; margin-top: 24px; padding-top: 18px; }
 
-      /* Actions / buttons — stack on mobile */
+      /* Actions / buttons â€” stack on mobile */
       .actions { flex-direction: column; gap: 10px; }
       .actions .btn { width: 100%; justify-content: center; }
 
       /* About photo stack */
       .photo-stack { padding: 0; }
-      .photo-main { height: 280px; border-radius: var(--radius-md); }
+      .photo-main { border-radius: var(--radius-md); }
       .photo-small { display: none; }
 
       /* Copy text */
       .about-copy p, .student-copy p { font-size: 15.5px; line-height: 1.75; }
 
-      /* Courses gallery — single column */
+      /* Courses gallery â€” single column */
       .course-gallery {
         grid-template-columns: 1fr;
         max-width: 100%;
@@ -1004,11 +1015,10 @@
       }
       .course-gallery .large {
         grid-row: auto;
-        height: 240px;
       }
-      .course-gallery .small { height: 200px; }
+      .course-gallery .small { }
 
-      /* Why grid — single column with horizontal card layout */
+      /* Why grid â€” single column with horizontal card layout */
       .why-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 32px; }
       .why-card {
         min-height: auto;
@@ -1020,16 +1030,19 @@
       .icon { width: 42px; height: 42px; min-width: 42px; border-radius: 12px; margin-bottom: 0; }
       .why-card h3 { font-size: 17px; }
 
-      /* Student gallery — single column */
+      /* Student gallery â€” single column */
       .student-gallery {
         grid-template-columns: 1fr;
         gap: 12px;
       }
       .student-gallery .tall {
         grid-row: auto;
-        height: 240px;
       }
-      .student-gallery .square { height: 200px; }
+      .student-gallery .square { }
+      .student-gallery .landscape {
+        aspect-ratio: 16 / 9;
+        grid-column: auto;
+      }
 
       /* Admissions */
       .admissions { padding: 70px 0; }
@@ -1045,12 +1058,11 @@
       .footer-bottom { flex-direction: column; text-align: center; margin-top: 18px; padding-top: 14px; gap: 6px; }
     }
 
-    /* ===== RESPONSIVE: SMALL MOBILE (≤400px) ===== */
+    /* ===== RESPONSIVE: SMALL MOBILE (â‰¤400px) ===== */
     @media (max-width: 400px) {
       .container { width: calc(100% - 28px); }
       .hero h1 { font-size: 30px; }
       .hero .tag { font-size: 16px; }
-      .hero-image { height: 260px; }
       .brand strong { font-size: 16px; }
       .brand small { display: none; }
       .btn { font-size: 11px; padding: 12px 16px; }
@@ -1066,6 +1078,13 @@
 </head>
 <body>
 
+  <!-- SVG sprite: brand icons not in Lucide -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </symbol>
+  </svg>
+
   <!-- Top Utility Bar with Contact Details -->
   <aside class="top-strip" aria-label="Quick contact">
     <div class="container top-strip-inner">
@@ -1077,7 +1096,7 @@
         <a href="tel:+919535954516"><i data-lucide="phone" style="width:14px;height:14px"></i> +91 9535954516</a>
         <a href="mailto:info@saisidd.edu.in"><i data-lucide="mail" style="width:14px;height:14px"></i> info@saisidd.edu.in</a>
         <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener" class="top-strip-wa">
-          <i data-lucide="message-circle" style="width:14px;height:14px"></i> WhatsApp
+          <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp
         </a>
       </div>
     </div>
@@ -1131,7 +1150,7 @@
         <a href="#admissions">Admissions <i data-lucide="chevron-right" style="width:16px;height:16px"></i></a>
         <div class="mobile-actions">
           <a href="tel:+917204023279" class="btn btn-dark"><i data-lucide="phone-call"></i> Call: +91 7204023279</a>
-          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener" class="btn btn-whatsapp"><i data-lucide="message-circle"></i> Chat on WhatsApp</a>
+          <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener" class="btn btn-whatsapp"><svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> Chat on WhatsApp</a>
         </div>
       </div>
     </div>
@@ -1156,7 +1175,7 @@
               Admissions <i data-lucide="arrow-right"></i>
             </a>
             <a class="btn btn-whatsapp" href="https://wa.me/917204023279?text=Hello%21%20I%20am%20interested%20in%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-              <i data-lucide="message-circle"></i> WhatsApp
+              <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp
             </a>
           </div>
 
@@ -1215,7 +1234,7 @@
               Admissions <i data-lucide="arrow-right"></i>
             </a>
             <a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-              Enquire Now <i data-lucide="message-circle"></i>
+              Enquire Now <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
             </a>
             <a class="btn btn-outline" href="tel:+917204023279">
               <i data-lucide="phone"></i> Call Admissions
@@ -1236,13 +1255,13 @@
           </p>
           <div class="actions" style="margin-top:35px">
             <a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20courses%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-              View Courses → <i data-lucide="arrow-up-right"></i>
+              View Courses â†’ <i data-lucide="arrow-up-right"></i>
             </a>
             <a class="btn btn-outline-gold" href="#admissions">
               Admissions <i data-lucide="arrow-right"></i>
             </a>
             <a class="btn btn-whatsapp" href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20more%20about%20courses%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-              <i data-lucide="message-circle"></i> WhatsApp Enquiry
+              <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp Enquiry
             </a>
           </div>
         </div>
@@ -1315,7 +1334,7 @@
             Admissions <i data-lucide="arrow-right"></i>
           </a>
           <a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-            Enquire Now <i data-lucide="message-circle"></i>
+            Enquire Now <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
           </a>
           <a class="btn btn-outline" href="tel:+917204023279">
             <i data-lucide="phone"></i> Call: +91 7204023279
@@ -1340,10 +1359,10 @@
               Admissions <i data-lucide="arrow-right"></i>
             </a>
             <a class="btn btn-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20know%20about%20student%20life%20and%20admissions%20at%20Sai%20Sidd%20College." target="_blank" rel="noopener">
-              Enquire Now <i data-lucide="message-circle"></i>
+              Enquire Now <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
             </a>
             <a class="btn btn-whatsapp" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-              <i data-lucide="message-circle"></i> WhatsApp
+              <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp
             </a>
           </div>
         </div>
@@ -1355,16 +1374,16 @@
               <img src="photos/IMG_0222.JPG" alt="Sai Sidd student life" loading="lazy" width="900" height="675">
             </picture>
           </div>
-          <div class="square" onclick="openLightbox('photos/IMG_0209.JPG')">
-            <picture>
-              <source srcset="photos/IMG_0209.webp" type="image/webp">
-              <img src="photos/IMG_0209.JPG" alt="Sai Sidd student learning" loading="lazy" width="900" height="675">
-            </picture>
-          </div>
           <div class="square" onclick="openLightbox('photos/IMG_0229.JPG')">
             <picture>
               <source srcset="photos/IMG_0229.webp" type="image/webp">
               <img src="photos/IMG_0229.JPG" alt="Sai Sidd college learning" loading="lazy" width="900" height="675">
+            </picture>
+          </div>
+          <div class="square landscape" onclick="openLightbox('photos/IMG_0209.JPG')">
+            <picture>
+              <source srcset="photos/IMG_0209.webp" type="image/webp">
+              <img src="photos/IMG_0209.JPG" alt="Sai Sidd student learning" loading="lazy" width="1600" height="900">
             </picture>
           </div>
         </div>
@@ -1385,10 +1404,10 @@
             Apply Now <i data-lucide="arrow-up-right"></i>
           </a>
           <a class="btn btn-outline-gold" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-            Enquire Now <i data-lucide="message-circle"></i>
+            Enquire Now <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
           </a>
           <a class="btn btn-whatsapp" href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener">
-            <i data-lucide="message-circle"></i> WhatsApp Us
+            <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp Us
           </a>
           <a class="btn btn-dark" href="tel:+917204023279" style="border: 1px solid rgba(255,255,255,0.25);">
             <i data-lucide="phone-call"></i> Call Now
@@ -1436,7 +1455,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Sai Sidd College of Allied Health Sciences. All Rights Reserved.</span>
+        <span>Â© 2026 Sai Sidd College of Allied Health Sciences. All Rights Reserved.</span>
         <span>Developed by <a href="https://www.instagram.com/cloudads.in/" target="_blank" rel="noopener noreferrer">cloudads.in</a></span>
       </div>
     </div>
@@ -1452,7 +1471,7 @@
 
   <!-- Floating WhatsApp CTA -->
   <a href="https://wa.me/917204023279?text=Hello%21%20I%20have%20an%20enquiry%20about%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener" class="floating-wa" aria-label="Chat with Sai Sidd College on WhatsApp">
-    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+    <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
   </a>
 
   <!-- Mobile Fixed Bottom Sticky Bar -->
@@ -1462,7 +1481,7 @@
         <i data-lucide="phone"></i> Call
       </a>
       <a href="https://wa.me/917204023279?text=Hello%21%20I%20want%20to%20apply%20at%20Sai%20Sidd%20College%20of%20Allied%20Health%20Sciences." target="_blank" rel="noopener" class="btn btn-whatsapp">
-        <i data-lucide="message-circle"></i> WhatsApp
+        <svg class="wa-icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg> WhatsApp
       </a>
       <a href="#admissions" class="btn btn-gold">
         Apply Now
